@@ -1,0 +1,165 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "user"] },
+        "depot": { "type": "string" },
+        "fullName": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "joinedDate": { "type": "string" }
+      },
+      "required": ["username", "role"]
+    },
+    "MaintenanceJob": {
+      "title": "MaintenanceJob",
+      "description": "A maintenance job record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "busNumber": { "type": "string" },
+        "depot": { "type": "string" },
+        "date": { "type": "string" },
+        "jobDescription": { "type": "string" },
+        "technician": { "type": "string" },
+        "status": { "type": "string", "enum": ["Pending", "In Progress", "Completed"] },
+        "notes": { "type": "string" },
+        "odometerReading": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["busNumber", "depot", "date", "status", "createdAt"]
+    },
+    "ScheduledMaintenance": {
+      "title": "ScheduledMaintenance",
+      "description": "A scheduled maintenance record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "busNumber": { "type": "string" },
+        "depot": { "type": "string" },
+        "scheduledDate": { "type": "string" },
+        "maintenanceType": { "type": "string" },
+        "odometerReading": { "type": "string" },
+        "status": { "type": "string", "enum": ["Scheduled", "Completed", "Missed"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["busNumber", "depot", "scheduledDate", "status", "createdAt"]
+    },
+    "Staff": {
+      "title": "Staff",
+      "description": "A staff member record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "designation": { "type": "string" },
+        "depot": { "type": "string" },
+        "employeeId": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "designation", "depot", "createdAt"]
+    },
+    "AttendanceRecord": {
+      "title": "AttendanceRecord",
+      "description": "An attendance record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "staffId": { "type": "string" },
+        "date": { "type": "string" },
+        "shift": { "type": "string" },
+        "status": { "type": "string", "enum": ["Present", "Absent", "Leave"] },
+        "extraDuty": { "type": "boolean" },
+        "notes": { "type": "string" }
+      },
+      "required": ["staffId", "date", "shift", "status"]
+    },
+    "Comment": {
+      "title": "Comment",
+      "description": "A user comment",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "username": { "type": "string" },
+        "depot": { "type": "string" },
+        "text": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "username", "depot", "text", "createdAt"]
+    },
+    "Bus": {
+      "title": "Bus",
+      "description": "A bus record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "busNumber": { "type": "string" },
+        "depot": { "type": "string" },
+        "model": { "type": "string" },
+        "year": { "type": "string" },
+        "engineNumber": { "type": "string" },
+        "chassisNumber": { "type": "string" },
+        "lastMaintenanceDate": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["busNumber", "depot", "createdAt"]
+    },
+    "Breakdown": {
+      "title": "Breakdown",
+      "description": "A breakdown record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "busNumber": { "type": "string" },
+        "depot": { "type": "string" },
+        "date": { "type": "string" },
+        "location": { "type": "string" },
+        "routeNo": { "type": "string" },
+        "causes": { "type": "string" },
+        "lossKm": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["busNumber", "depot", "date", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/maintenance_jobs/{jobId}": {
+      "schema": "MaintenanceJob",
+      "description": "Maintenance job records"
+    },
+    "/scheduled_maintenance/{scheduleId}": {
+      "schema": "ScheduledMaintenance",
+      "description": "Scheduled maintenance records"
+    },
+    "/staff/{staffId}": {
+      "schema": "Staff",
+      "description": "Staff member records"
+    },
+    "/attendance/{attendanceId}": {
+      "schema": "AttendanceRecord",
+      "description": "Attendance records"
+    },
+    "/comments/{commentId}": {
+      "schema": "Comment",
+      "description": "User comments"
+    },
+    "/buses/{busId}": {
+      "schema": "Bus",
+      "description": "Bus fleet records"
+    },
+    "/breakdowns/{breakdownId}": {
+      "schema": "Breakdown",
+      "description": "Breakdown records"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "Bus Maintenance Pro",
+  "description": "A professional bus maintenance management system with real-time synchronization, depot-wise dashboards, and Excel export capabilities.",
+  "requestFramePermissions": []
+}

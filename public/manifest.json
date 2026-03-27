@@ -1,0 +1,17 @@
+{
+  "name": "Bus Maintenance Pro",
+  "short_name": "BusPro",
+  "description": "A professional bus maintenance management system with real-time synchronization, depot-wise dashboards, and Excel export capabilities.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1042/1042263.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
